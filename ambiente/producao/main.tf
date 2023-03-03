@@ -3,5 +3,7 @@ module "aws-prod1" {
     instancia = "t3.medium"
     nome_instancia = "terraformProd"
     regiao_aws = "us-west-2"
-    chave = "iac-prod2"   
+    chave = "iac-prod2"
+    min_ec2 = 2
+    max_ec2 = 8 
 }

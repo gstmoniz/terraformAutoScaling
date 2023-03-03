@@ -17,7 +17,7 @@ resource "aws_launch_template" "serverAutoScale" {
   image_id = "ami-0a8bcde34acb334ab"
   # SUSE Linux Enterprise Server 15 SP4 64-bit
   instance_type = var.instancia
-  vpc_security_group_ids = [ aws_security_group.290223-sc.id ]
+  vpc_security_group_ids = [ aws_security_group.a290223-sc.id ]
   # security_group_names <- search differences
   key_name = var.chave
   tags = {
@@ -33,6 +33,17 @@ resource "aws_launch_template" "serverAutoScale" {
 #      version = "$Latest"
 #    }
 # }
+
+resource "aws_autoscaling_group" "scaleGroup" {
+  name = "${var.nome_instancia}-ASGroup"
+  availability_zones = [ "${var.regiao_aws}a","${var.regiao_aws}b" ]
+  max_size = var.max_ec2
+  min_size = var.min_ec2
+  launch_template {
+    id = aws_launch_template.serverAutoScale.id
+    version = "$Latest"
+  }
+}
 
 resource "aws_key_pair" "ssh-key" {
   key_name = var.chave

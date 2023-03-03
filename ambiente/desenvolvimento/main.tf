@@ -3,5 +3,7 @@ module "aws-dev1" {
     instancia = "t2.micro"
     nome_instancia = "terraformDev"
     regiao_aws = "us-west-2"
-    chave = "iac-dev2"   
+    chave = "iac-dev2"
+    min_ec2 = 0
+    max_ec2 = 1 
 }

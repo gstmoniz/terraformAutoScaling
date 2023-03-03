@@ -1,5 +1,5 @@
-resource "aws_security_group" "290223-sc" {
-    name = "${var.nome_instancia}-290223-sc"
+resource "aws_security_group" "a290223-sc" {
+    name = "${var.nome_instancia}-a290223-sc"
     description = "acesso 22"
     ingress{
         cidr_blocks = [ "0.0.0.0/0" ]
@@ -16,6 +16,6 @@ resource "aws_security_group" "290223-sc" {
         protocol = "-1"
     }
     tags = {
-        Name = "290223-sc"
+        Name = "a290223-sc"
     }
 }
