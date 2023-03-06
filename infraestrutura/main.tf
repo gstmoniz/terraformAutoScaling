@@ -54,6 +54,19 @@ resource "aws_autoscaling_group" "scaleGroup" {
 # target_group_arns -> set of aws_alb_target_group arns for use with ALB
 # defines that the resource is the target of the other
 
+resource "aws_autoscaling_policy" "scalePolicy" {
+  depends_on = [ aws_autoscaling_group.scaleGroup ]
+  name = "${var.nome_instancia}-ASPolicy"
+  autoscaling_group_name = "${var.nome_instancia}-ASGroup"
+  policy_type = "TargetTrackingScaling"
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 50.0
+  }
+}
+
 resource "aws_default_subnet" "subnet_1" {
   availability_zone = "${var.regiao_aws}a"
 }
