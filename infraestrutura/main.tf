@@ -70,6 +70,7 @@ resource "aws_default_vpc" "default" {
 resource "aws_lb" "loadBalancer" {
   internal = false
   load_balancer_type = "application"
+  security_groups = [ aws_security_group.a290223-sc.id ]
   subnets = [ aws_default_subnet.subnet_1.id,aws_default_subnet.subnet_2.id ]
   tags = {
     Name = "${var.nome_instancia}-ELB"
