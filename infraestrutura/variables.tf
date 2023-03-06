@@ -18,3 +18,7 @@ variable "max_ec2" {
 variable "min_ec2" {
     type = number
 }
+
+variable "desenv" {
+    type = bool
+}

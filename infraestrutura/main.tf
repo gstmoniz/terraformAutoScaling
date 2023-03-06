@@ -25,7 +25,7 @@ resource "aws_launch_template" "serverAutoScale" {
   vpc_security_group_ids = [ aws_security_group.a290223-sc.id ]
   # security_group_names <- search differences
   key_name = var.chave
-  user_data = filebase64("config_script.sh")
+  user_data = var.desenv ? filebase64("config_script.sh") : ""
   tags = {
     Name = var.nome_instancia
   }

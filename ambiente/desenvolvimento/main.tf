@@ -6,4 +6,5 @@ module "aws-dev1" {
     chave = "iac-dev2"
     min_ec2 = 1
     max_ec2 = 8 
+    desenv = true
 }
