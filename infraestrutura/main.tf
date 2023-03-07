@@ -130,8 +130,3 @@ resource "aws_autoscaling_schedule" "sunrise" {
   recurrence = "30 05 * * MON-FRI"
   time_zone = "Etc/GMT+3"
 }
-
-
-
-
-
