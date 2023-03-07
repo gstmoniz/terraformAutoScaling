@@ -106,3 +106,32 @@ resource "aws_lb_listener" "ELB_listener" {
     target_group_arn = aws_lb_target_group.ELB_target.arn
   }
 }
+
+# AUTO SCALING SCHEDULE
+
+resource "aws_autoscaling_schedule" "daybreak" {
+  scheduled_action_name = "off"
+  autoscaling_group_name = aws_autoscaling_group.scaleGroup.name
+  min_size = 0
+  max_size = 0
+  desired_capacity = 0
+  start_time = timeadd(timestamp(),"6m")
+  recurrence = "30 22 * * MON-FRI"
+  time_zone = "Etc/GMT+3"
+}
+
+resource "aws_autoscaling_schedule" "sunrise" {
+  scheduled_action_name = "on"
+  autoscaling_group_name = aws_autoscaling_group.scaleGroup.name
+  min_size = var.min_ec2
+  max_size = var.max_ec2
+  desired_capacity = var.min_ec2
+  start_time = timeadd(timestamp(),"3m")
+  recurrence = "30 05 * * MON-FRI"
+  time_zone = "Etc/GMT+3"
+}
+
+
+
+
+
