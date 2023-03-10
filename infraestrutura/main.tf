@@ -91,7 +91,7 @@ resource "aws_lb" "loadBalancer" {
 }
 
 resource "aws_lb_target_group" "ELB_target" {
-  name = "targetASGroup"
+  name = var.lb_target
   port = "8080"
   protocol = "HTTP"
   vpc_id = aws_default_vpc.default.id

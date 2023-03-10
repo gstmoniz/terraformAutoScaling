@@ -6,5 +6,6 @@ module "aws-prod1" {
     chave = "iac-prod2"
     min_ec2 = 2
     max_ec2 = 8
+    lb_target = "prodTargetASGroup"
     desenv = false
 }

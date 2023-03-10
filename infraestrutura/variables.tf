@@ -11,6 +11,10 @@ variable "nome_instancia" {
     type = string
 }
 
+variable "lb_target" {
+    type = string
+}
+
 variable "max_ec2" {
     type = number
 }

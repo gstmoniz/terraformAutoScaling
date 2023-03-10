@@ -5,6 +5,7 @@ module "aws-dev1" {
     regiao_aws = "us-west-2"
     chave = "iac-dev2"
     min_ec2 = 1
-    max_ec2 = 8 
+    max_ec2 = 8
+    lb_target = "devTargetASGroup"
     desenv = true
 }
